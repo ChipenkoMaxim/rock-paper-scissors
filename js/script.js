@@ -51,7 +51,25 @@ function computerPlay()
   }
 }
 
-let playerTurn = () => prompt("Your turn?").toLowerCase();
+function playerPlay()
+{
+  let itsValidTurn = false;
+  let playerTurn;
+  while (!itsValidTurn) {
+    playerTurn = prompt("Your Turn?").toLowerCase();
+    itsValidTurn = checkPlayerTurn(playerTurn);
+  }
+  return playerTurn;
+}
+
+function checkPlayerTurn(playerTurn)
+{
+  if (playerTurn == 'rock' || playerTurn == 'paper' || playerTurn == 'scissors')
+  {
+    return true;
+  }
+  return false;
+}
 
 function decideRoundWinner(computerTurn, playerTurn)
 {
