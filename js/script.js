@@ -2,12 +2,9 @@
 
 
 
-
 let computerWins = 0;
 let playerWins = 0;
-game();
-
-
+//game();
 
 
 
@@ -37,4 +34,19 @@ function playRound()
   let playerTurn = playerPlay();
   //Decide winner of the round
   decideRoundWinner(computerTurn, playerTurn);
+}
+
+function computerPlay()
+{
+  //Computer make arbitrary turn
+  let computerTurn = Math.floor(Math.random()*3) + 1;
+  switch (computerTurn)
+  {
+    case 1:
+      return "rock";
+    case 2:
+      return "paper";
+    case 3:
+      return "scissors";
+  }
 }
