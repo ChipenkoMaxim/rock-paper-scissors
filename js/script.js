@@ -50,3 +50,5 @@ function computerPlay()
       return "scissors";
   }
 }
+
+let playerTurn = () => prompt("Your turn?").toLowerCase();
