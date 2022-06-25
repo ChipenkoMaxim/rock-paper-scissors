@@ -12,23 +12,22 @@ game();
 
 
 //Start of the game
-function game()
-{
+function game() {
   //How many rounds player wants to play?
   let rounds = +(prompt("How many rounds do you want to play?"));
-  
+
   //Play assigned amount of rounds
   for (let i = 0; i < rounds; i++) {
     //Start of the round
     playRound();
+    printGameScore();
   }
-//End of the game
+  //End of the game
   printGameWinner();
 }
 
 
-function playRound()
-{
+function playRound() {
   //Computer make its turn
   let computerTurn = computerPlay();
   //Player make his turn
@@ -37,12 +36,10 @@ function playRound()
   decideRoundWinner(computerTurn, playerTurn);
 }
 
-function computerPlay()
-{
+function computerPlay() {
   //Computer make arbitrary turn
-  let computerTurn = Math.floor(Math.random()*3) + 1;
-  switch (computerTurn)
-  {
+  let computerTurn = Math.floor(Math.random() * 3) + 1;
+  switch (computerTurn) {
     case 1:
       return "rock";
     case 2:
@@ -52,8 +49,7 @@ function computerPlay()
   }
 }
 
-function playerPlay()
-{
+function playerPlay() {
   let itsValidTurn = false;
   let playerTurn;
   while (!itsValidTurn) {
@@ -63,59 +59,51 @@ function playerPlay()
   return playerTurn;
 }
 
-function checkPlayerTurn(playerTurn)
-{
-  if (playerTurn == 'rock' || playerTurn == 'paper' || playerTurn == 'scissors')
-  {
+function checkPlayerTurn(playerTurn) {
+  if (playerTurn == 'rock' || playerTurn == 'paper' || playerTurn == 'scissors') {
     return true;
   }
   return false;
 }
 
-function decideRoundWinner(computerTurn, playerTurn)
-{
-  if (computerTurn == 'rock' && playerTurn == 'scissors')
-  {
+function decideRoundWinner(computerTurn, playerTurn) {
+  if (computerTurn == 'rock' && playerTurn == 'scissors') {
     computerWin(computerTurn, playerTurn);
   }
-  else if (computerTurn == 'paper' && playerTurn == 'rock')
-  {
+  else if (computerTurn == 'paper' && playerTurn == 'rock') {
     computerWin(computerTurn, playerTurn);
   }
-  else if (computerTurn == 'scissors' && playerTurn == 'paper')
-  {
+  else if (computerTurn == 'scissors' && playerTurn == 'paper') {
     computerWin(computerTurn, playerTurn);
   }
-  else if (computerTurn == playerTurn)
-  {
+  else if (computerTurn == playerTurn) {
     tie();
   }
-  else 
-  {
+  else {
     playerWin(computerTurn, playerTurn);
   }
 }
 
-function computerWin(computerTurn, playerTurn)
-{
+function computerWin(computerTurn, playerTurn) {
   console.log(`${computerTurn} beats ${playerTurn}, computer wins this round`);
   computerWins++;
 }
 
-function playerWin(computerTurn, playerTurn)
-{
+function playerWin(computerTurn, playerTurn) {
   console.log(`${playerTurn} beats ${computerTurn}, player wins this round`);
   playerWins++;
 }
 
-function tie()
-{
+function tie() {
   console.log("It\'s tie!");
   computerWins++;
   playerWins++;
 }
 
-function printGameWinner()
-{
+function printGameScore() {
+  console.log(`Computer ${computerWins} : Player ${playerWins}`);
+}
+
+function printGameWinner() {
   (computerWins > playerWins) ? console.log("Computer wins the game!") : console.log("Player wins the game!");
 }
