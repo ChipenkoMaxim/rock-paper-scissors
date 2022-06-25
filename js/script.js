@@ -3,7 +3,8 @@
 
 
 
-
+let computerWins = 0;
+let playerWins = 0;
 game();
 
 
@@ -24,15 +25,16 @@ function game()
     //Start of the round
     playRound();
   }
-    //Computer make its turn
-    //Player make his turn
-    //Decide winner of the round
-    //Start next round until the last round
 //End of the game
 }
 
 
 function playRound()
 {
-  console.log("round");
+  //Computer make its turn
+  let computerTurn = computerPlay();
+  //Player make his turn
+  let playerTurn = playerPlay();
+  //Decide winner of the round
+  decideRoundWinner(computerTurn, playerTurn);
 }
