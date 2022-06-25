@@ -52,3 +52,46 @@ function computerPlay()
 }
 
 let playerTurn = () => prompt("Your turn?").toLowerCase();
+
+function decideRoundWinner(computerTurn, playerTurn)
+{
+  if (computerTurn == 'rock' && playerTurn == 'scissors')
+  {
+    computerWin(computerTurn, playerTurn);
+  }
+  else if (computerTurn == 'paper' && playerTurn == 'rock')
+  {
+    computerWin(computerTurn, playerTurn);
+  }
+  else if (computerTurn == 'scissors' && playerTurn == 'paper')
+  {
+    computerWin(computerTurn, playerTurn);
+  }
+  else if (computerTurn == playerTurn)
+  {
+    tie();
+  }
+  else 
+  {
+    playerWin(computerTurn, playerTurn);
+  }
+}
+
+function computerWin(computerTurn, playerTurn)
+{
+  console.log(`${computerTurn} beats ${playerTurn}, computer wins this round`);
+  computerWins++;
+}
+
+function playerWin(computerTurn, playerTurn)
+{
+  console.log(`${playerTurn} beats ${computerTurn}, player wins this round`);
+  playerWins++;
+}
+
+function tie()
+{
+  console.log("It\'s tie!");
+  computerWins++;
+  playerWins++;
+}
