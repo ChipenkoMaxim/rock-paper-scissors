@@ -4,7 +4,7 @@
 
 let computerWins = 0;
 let playerWins = 0;
-//game();
+game();
 
 
 
@@ -23,6 +23,7 @@ function game()
     playRound();
   }
 //End of the game
+  printGameWinner();
 }
 
 
@@ -112,4 +113,9 @@ function tie()
   console.log("It\'s tie!");
   computerWins++;
   playerWins++;
+}
+
+function printGameWinner()
+{
+  (computerWins > playerWins) ? console.log("Computer wins the game!") : console.log("Player wins the game!");
 }
