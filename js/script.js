@@ -10,12 +10,15 @@ game();
 
 
 
-
 //Start of the game
 function game() {
   //How many rounds player wants to play?
   let rounds = +(prompt("How many rounds do you want to play?"));
-
+  if (isNaN(rounds)|| rounds <= 0)
+  {
+    console.log("Print correct number of rounds");
+    return 1;
+  }
   //Play assigned amount of rounds
   for (let i = 0; i < rounds; i++) {
     //Start of the round
@@ -105,5 +108,16 @@ function printGameScore() {
 }
 
 function printGameWinner() {
-  (computerWins > playerWins) ? console.log("Computer wins the game!") : console.log("Player wins the game!");
+  if (computerWins > playerWins)
+  {
+    console.log("Computer wins the game!");
+  }
+  else if (playerWins > computerWins)
+  {
+    console.log("Player wins the game!");
+  }
+  else if (computerWins == playerWins)
+  {
+    console.log("Nobody wins the game! It's tie!");
+  }
 }
