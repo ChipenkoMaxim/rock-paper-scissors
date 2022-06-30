@@ -9,6 +9,8 @@ let playerChoice;
 
 
 const buttons = document.querySelectorAll('button');
+const div = document.querySelector('div');
+div.setAttribute('style', 'white-space: pre;');
 
 buttons.forEach(button => button.addEventListener('click', playerPlay));
 buttons.forEach(button => button.addEventListener('click', game));
@@ -95,36 +97,43 @@ function decideRoundWinner(computerTurn, playerTurn) {
 }
 
 function computerWin(computerTurn, playerTurn) {
-  console.log(`${computerTurn} beats ${playerTurn}, computer wins this round`);
+  //console.log(`${computerTurn} beats ${playerTurn}, computer wins this round`);
+  div.textContent += `\n${computerTurn} beats ${playerTurn}, computer wins this round`;
   computerWins++;
 }
 
 function playerWin(computerTurn, playerTurn) {
-  console.log(`${playerTurn} beats ${computerTurn}, player wins this round`);
+  //console.log(`${playerTurn} beats ${computerTurn}, player wins this round`);
+  div.textContent += `\n${playerTurn} beats ${computerTurn}, player wins this round`;
   playerWins++;
 }
 
 function tie() {
-  console.log("It\'s tie!");
+  div.textContent += `\nIt's tie!`;
+  //console.log("It\'s tie!");
   computerWins++;
   playerWins++;
 }
 
 function printGameScore() {
-  console.log(`Computer ${computerWins} : Player ${playerWins}`);
+  div.textContent += `\nComputer ${computerWins} : Player ${playerWins}`;
+  //console.log(`Computer ${computerWins} : Player ${playerWins}`);
 }
 
 function printGameWinner() {
   if (computerWins > playerWins)
   {
-    console.log("Computer wins the game!");
+    div.textContent += `\nComputer wins the game!`;
+    //console.log("Computer wins the game!");
   }
   else if (playerWins > computerWins)
   {
-    console.log("Player wins the game!");
+    div.textContent += `\nPlayer wins the game!`;
+    //console.log("Player wins the game!");
   }
   else if (computerWins == playerWins)
   {
-    console.log("Nobody wins the game! It's tie!");
+    //div.textContent += `Nobody wins the game! It's tie`
+    //console.log("Nobody wins the game! It's tie!");
   }
 }
