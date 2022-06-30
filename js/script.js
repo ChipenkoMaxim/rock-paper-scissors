@@ -6,50 +6,35 @@ let computerWins = 0;
 let playerWins = 0;
 const winsToWin = 5;
 let playerChoice;
-//game();
 
 
 const buttons = document.querySelectorAll('button');
 const div = document.querySelector('div');
 div.setAttribute('style', 'white-space: pre;');
 
+
 buttons.forEach(button => button.addEventListener('click', playerPlay));
 buttons.forEach(button => button.addEventListener('click', playRound));
-//Start of the game
-// function game() {
-//   //How many rounds player wants to play?
-//   // let rounds = +(prompt("How many rounds do you want to play?"));
-//   // if (isNaN(rounds)|| rounds <= 0)
-//   // {
-//   //   console.log("Print correct number of rounds");
-//   //   return 1;
-//   // }
-//   let rounds = 1;
-//   //Play assigned amount of rounds
-//   for (let i = 0; i < rounds; i++) {
-//     //Start of the round
-//     playRound();
-//     printGameScore();
-//   }
-//   //End of the game
-//   printGameWinner();
-// }
+
 
 function resetScore() {
-  div.textContent = `Result:`;
   computerWins = 0;
   playerWins = 0;
 }
 
+function clearResults() {
+  div.textContent = ``;
+}
+
 function playRound() {
   //Computer make its turn
+  clearResults();
   if (computerWins === winsToWin || playerWins === winsToWin) {
     resetScore();
   }
   let computerTurn = computerPlay();
   //Player make his turn
   let playerTurn = playerChoice;
-  //let playerTurn = playerPlay();
   //Decide winner of the round
   decideRoundWinner(computerTurn, playerTurn);
   printGameScore();
@@ -70,15 +55,7 @@ function computerPlay() {
 }
 
 function playerPlay(e) {
-  // let itsValidTurn = false;
-  // let playerTurn;
-  // while (!itsValidTurn) {
-  //   playerTurn = prompt("Your Turn?").toLowerCase();
-  //   itsValidTurn = checkPlayerTurn(playerTurn);
-  // }
-  // this.textContent
   playerChoice = this.textContent.toLowerCase();
-  //return this.textContent.toLowerCase();
 }
 
 function checkPlayerTurn(playerTurn) {
@@ -107,57 +84,33 @@ function decideRoundWinner(computerTurn, playerTurn) {
 }
 
 function computerWin(computerTurn, playerTurn) {
-  //console.log(`${computerTurn} beats ${playerTurn}, computer wins this round`);
   div.textContent += `\n${computerTurn} beats ${playerTurn}, computer wins this round`;
   computerWins++;
 }
 
 function playerWin(computerTurn, playerTurn) {
-  //console.log(`${playerTurn} beats ${computerTurn}, player wins this round`);
   div.textContent += `\n${playerTurn} beats ${computerTurn}, player wins this round`;
   playerWins++;
 }
 
 function tie() {
   div.textContent += `\nIt's tie!`;
-  //console.log("It\'s tie!");
-  //computerWins++;
-  //playerWins++;
 }
 
 function printGameScore() {
   div.textContent += `\nComputer ${computerWins} : Player ${playerWins}`;
-  //console.log(`Computer ${computerWins} : Player ${playerWins}`);
 }
 
 function printGameWinner() {
   if (computerWins === winsToWin || playerWins === winsToWin) {
+    clearResults();
     if (computerWins > playerWins) {
       div.textContent += `\nComputer wins the game!`;
       printGameScore();
-      //console.log("Computer wins the game!");
     }
     else if(playerWins > computerWins) {
       div.textContent += `\nPlayer wins the game!`;
       printGameScore();
-      //console.log("Player wins the game!");
     }
-    // div.textContent = `Results:`;
   }
 }
-
-
-
-
-  // if (computerWins > playerWins) {
-  //   div.textContent += `\nComputer wins the game!`;
-  //   //console.log("Computer wins the game!");
-  // }
-  // else if (playerWins > computerWins) {
-  //   div.textContent += `\nPlayer wins the game!`;
-  //   //console.log("Player wins the game!");
-  // }
-  // else if (computerWins == playerWins) {
-  //   //div.textContent += `Nobody wins the game! It's tie`
-  //   //console.log("Nobody wins the game! It's tie!");
-  // }

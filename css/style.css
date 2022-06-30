@@ -1,5 +1,19 @@
 * {
   margin: 0;
   padding: 0;
-  border: solid red;
+}
+
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results {
+  border: solid black;
+  height: 100px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
 }
