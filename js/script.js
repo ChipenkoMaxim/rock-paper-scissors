@@ -4,21 +4,25 @@
 
 let computerWins = 0;
 let playerWins = 0;
-game();
+let playerChoice;
+//game();
 
 
+const buttons = document.querySelectorAll('button');
 
-
+buttons.forEach(button => button.addEventListener('click', playerPlay));
+buttons.forEach(button => button.addEventListener('click', game));
 
 //Start of the game
 function game() {
   //How many rounds player wants to play?
-  let rounds = +(prompt("How many rounds do you want to play?"));
-  if (isNaN(rounds)|| rounds <= 0)
-  {
-    console.log("Print correct number of rounds");
-    return 1;
-  }
+  // let rounds = +(prompt("How many rounds do you want to play?"));
+  // if (isNaN(rounds)|| rounds <= 0)
+  // {
+  //   console.log("Print correct number of rounds");
+  //   return 1;
+  // }
+  let rounds = 1;
   //Play assigned amount of rounds
   for (let i = 0; i < rounds; i++) {
     //Start of the round
@@ -34,7 +38,8 @@ function playRound() {
   //Computer make its turn
   let computerTurn = computerPlay();
   //Player make his turn
-  let playerTurn = playerPlay();
+  let playerTurn = playerChoice;
+  //let playerTurn = playerPlay();
   //Decide winner of the round
   decideRoundWinner(computerTurn, playerTurn);
 }
@@ -52,14 +57,16 @@ function computerPlay() {
   }
 }
 
-function playerPlay() {
-  let itsValidTurn = false;
-  let playerTurn;
-  while (!itsValidTurn) {
-    playerTurn = prompt("Your Turn?").toLowerCase();
-    itsValidTurn = checkPlayerTurn(playerTurn);
-  }
-  return playerTurn;
+function playerPlay(e) {
+  // let itsValidTurn = false;
+  // let playerTurn;
+  // while (!itsValidTurn) {
+  //   playerTurn = prompt("Your Turn?").toLowerCase();
+  //   itsValidTurn = checkPlayerTurn(playerTurn);
+  // }
+  // this.textContent
+  playerChoice = this.textContent.toLowerCase();
+  //return this.textContent.toLowerCase();
 }
 
 function checkPlayerTurn(playerTurn) {
